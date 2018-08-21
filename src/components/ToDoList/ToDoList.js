@@ -19,15 +19,12 @@ export default class AuthError extends Component{
         {
             let users = await axios.get('http://api-tasks-react/v1/admin/users/inactive');
 
-            if (users && users.data && users.data.data) {
+            if (users && users.data && users.data.data && users.data.data.total !== 0) {
 
                 this.setState({
                     inactiveUsers: users.data.data.total,
                     inactiveUsersCard: true
                 });
-
-            } else {
-                this.props.history.push('/error')
             }
         }
     }
