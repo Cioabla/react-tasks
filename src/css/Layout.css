@@ -1,0 +1,96 @@
+body {
+    background-color: #ccc;
+}
+.main-container {
+    margin: 0;
+    padding: 0;
+    width: 98.5%;
+}
+
+.leftContainer {
+    background-color: #333;
+    padding: 0;
+    height: 100vh;
+}
+
+.leftContainerTitle {
+    text-align: center;
+    color: white;
+    margin-top: 10px;
+    font-size: 17px;
+    background-color: #3B5998;
+}
+
+.leftContainerDivTitle {
+    margin: 0;
+    padding: 0;
+}
+
+.leftContainerDivTitle p{
+    margin: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.listTitle {
+    font-size: 13px;
+    background-color: #333;
+    color: dimgray;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.users {
+    background-color: #612D2D;
+    color: white;
+}
+
+.users:hover {
+    background-color: #333;
+}
+
+.icon {
+    margin-right: 10px;
+    color: black;
+}
+
+.list a {
+    text-decoration: none;
+}
+
+.rightContainer {
+    padding: 0;
+    background-color: #ccc;
+}
+
+.dashboard {
+    padding: 10px;
+}
+
+.dashboard-header {
+    display: block;
+    width: 100%;
+}
+
+.dashboard-header p {
+    text-align: right;
+    font-size: small;
+    color: black;
+    font-family: 'DINPro-Medium', serif;
+}
+
+.dashboard-body {
+    display: block;
+}
+
+
+
+@media only screen and (max-width: 992px) {
+    .main-container {
+        width: 100%;
+    }
+
+    .leftContainer {
+        height: 100%;
+    }
+}

@@ -1,0 +1,12 @@
+.imgCard {
+    height: 250px;
+    padding: 30px;
+}
+
+.card-to-do {
+    min-height: 500px;
+}
+
+.card-to-do-cancel {
+    float: right;
+}

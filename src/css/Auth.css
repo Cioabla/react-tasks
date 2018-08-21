@@ -1,0 +1,34 @@
+.authContainer {
+    margin-top: 100px;
+    background-color: #3B5998;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-radius: 10px;
+}
+
+.containerHeader {
+    margin-bottom: 15px;
+    border-bottom: 2px solid black;
+}
+
+.titleHeader {
+    color: white;
+}
+
+.errMessage {
+    margin-bottom: 25px;
+    text-align: center;
+    color: #DB4437;
+}
+
+.signUP {
+    float: right;
+}
+
+.inputPassword {
+    padding-bottom: 0;
+}
+
+.forgotPassword:visited {
+    color: white;
+}

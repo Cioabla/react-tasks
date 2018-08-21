@@ -1,0 +1,47 @@
+.users-list {
+    margin: 10px 0 20px;
+}
+
+.button-add {
+    width: 100%;
+}
+
+.button-delete {
+    margin-left: 3%;
+    width: 55%;
+}
+.button-edit {
+    width: 42%;
+}
+
+.toShow {
+    display: none;
+}
+
+.currentPg {
+    margin-left: 10px;
+    margin-right: 30px;
+}
+
+.totalUsers {
+    margin-left: 30px;
+}
+
+.selectFilter {
+    font-size: 13px;
+    padding-right: 5px;
+}
+
+.selectOption {
+    padding-left: 5px;
+}
+
+@media (max-width: 991px) {
+    .toHide {
+        display: none !important;
+    }
+
+    .toShow {
+        display: inline !important;
+    }
+}

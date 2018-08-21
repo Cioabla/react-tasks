@@ -1,0 +1,14 @@
+.header {
+    background-color: #3c8dbc;
+}
+
+.logo {
+    color: white;
+    font-size: 25px;
+    margin-left: 40px;
+    font-family: 'DINPro-Medium', serif;
+}
+
+.navItem {
+    color: white;
+}

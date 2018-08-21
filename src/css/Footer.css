@@ -1,0 +1,11 @@
+.footer {
+    background-color: #3B5998;
+}
+
+.footer p {
+     margin: 0;
+     text-align: center;
+     font-size: 23px;
+     color: white;
+     font-family: 'DINPro-Medium', serif;
+ }
