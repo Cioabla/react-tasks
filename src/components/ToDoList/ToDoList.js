@@ -5,6 +5,7 @@ import inactiveUsersImg from '../../images/img_inactive_users.svg';
 import inactiveTasksImg from '../../images/img_inactive_tasks.svg';
 import activeTasksImg from '../../images/img_active_tasks.svg';
 import '../../css/ToDoList.css';
+import {Link} from 'react-router-dom';
 import {Card,CardImg,CardBody,CardTitle,CardSubtitle,Button,Row,Col , CardFooter , CardHeader} from 'reactstrap';
 
 
@@ -29,10 +30,6 @@ export default class AuthError extends Component{
         }
     }
 
-    _inactiveUserAction = () => {
-        this.props.history.push('/users/inactive')
-    };
-
     _cancelAction = () => {
         this.setState({
             inactiveUsersCard: false
@@ -55,7 +52,7 @@ export default class AuthError extends Component{
                                     <CardSubtitle>users are waiting to be enabled</CardSubtitle>
                                 </CardBody>
                                 <CardFooter>
-                                    <Button color={'success'} onClick={this._inactiveUserAction}>Go</Button>
+                                    <Link to={'/users/inactive'}><Button color={'success'}>Go</Button></Link>
                                     <Button color={'danger'} onClick={this._cancelAction} className={'card-to-do-cancel'}>Cancel</Button>
                                 </CardFooter>
                             </Card>
@@ -63,7 +60,7 @@ export default class AuthError extends Component{
                         <Col lg={4}>
                             <Card className={'card-to-do'}>
                                 <CardHeader>Your active tasks</CardHeader>
-                                <CardImg className={'imgCard'} top  src={inactiveTasksImg} alt="Card image cap" />
+                                <CardImg className={'imgCard'} top  src={activeTasksImg} alt="Card image cap" />
                                 <CardBody>
                                     <CardTitle>3</CardTitle>
                                     <CardSubtitle>Functionalitate in lucru</CardSubtitle>
@@ -77,7 +74,7 @@ export default class AuthError extends Component{
                         <Col lg={4}>
                             <Card className={'card-to-do'}>
                                 <CardHeader>Your inactive tasks</CardHeader>
-                                <CardImg className={'imgCard'} top  src={activeTasksImg} alt="Card image cap" />
+                                <CardImg className={'imgCard'} top  src={inactiveTasksImg} alt="Card image cap" />
                                 <CardBody>
                                     <CardTitle>3</CardTitle>
                                     <CardSubtitle>Functionalitate in lucru</CardSubtitle>

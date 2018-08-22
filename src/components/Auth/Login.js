@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Link,Redirect} from "react-router-dom";
 
 import {InputGroup,Input,Button,Container} from 'reactstrap';
 
@@ -41,16 +42,11 @@ export default class Login extends Component {
         }
     };
 
-    _redirectRegister = () => {
-        this.props.history.push('/register');
-    };
-
     render() {
         const {email, password,error} = this.state;
 
-        if(sessionStorage.getItem('token'))
-        {
-            this.props.history.push('/users');
+        if (sessionStorage.getItem('token')) {
+            return <Redirect to={'/'}/>
         }
 
         return (
@@ -67,12 +63,12 @@ export default class Login extends Component {
                 </InputGroup>
                 <br />
                 <div>
-                    <a className={'forgotPassword'} href={'/forgot-password'}><small>Forgot password</small></a>
+                    <Link className={'forgotPassword'} to={'/forgot-password'}><small>Forgot password</small></Link>
                 </div>
                 <br/>
                 {error && <h2 className={"errMessage"}>{error}</h2>}
                 <Button onClick={this._login} color="success">Sign in</Button>
-                <Button onClick={this._redirectRegister} className={'signUP'} color="success">Sign up</Button>
+                <Link className={'signUp-redirect'} to={'/register'}><Button className={'signUP'} color="success">Sign up</Button></Link>
             </Container>
         )
     }

@@ -25,6 +25,10 @@
     float: right;
 }
 
+.signUp-redirect {
+    color: white;
+}
+
 .inputPassword {
     padding-bottom: 0;
 }

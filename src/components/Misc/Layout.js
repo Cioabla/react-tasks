@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import {Redirect} from "react-router-dom";
+import {Redirect,Link} from "react-router-dom";
 import axios from 'axios';
 import qs from 'qs';
 import {Row,Col,ListGroup,ListGroupItem} from 'reactstrap';
@@ -55,8 +55,9 @@ export default class Layout extends Component {
                             <Col className={'leftContainerDivTitle'} lg='12'>
                                 <ListGroup className={'list'}>
                                     <ListGroupItem className={'listTitle'}>MAIN NAVIGATION</ListGroupItem>
-                                    <a href={'/to-do-list'}><ListGroupItem className={'users'}><Icon className={'icon'} name='spinner'/>TO DO LIST</ListGroupItem></a>
-                                    {admin && <a href={'/users'}><ListGroupItem className={'users'}><Icon className={'icon'} name='users'/>All Users</ListGroupItem></a>}
+                                    <Link to={'/to-do-list'}><ListGroupItem className={'list-element'}><Icon className={'icon'} name='spinner'/>TO DO LIST</ListGroupItem></Link>
+                                    {admin && <Link to={'/users'}><ListGroupItem className={'list-element'}><Icon className={'icon'} name='users'/>All Users</ListGroupItem></Link>}
+                                    <Link to={'/tasks'}><ListGroupItem className={'list-element'}><Icon className={'icon'} name='tasks'/>All tasks</ListGroupItem></Link>
                                 </ListGroup>
                             </Col>
                         </Col>

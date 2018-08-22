@@ -10,6 +10,7 @@ import ChangePassword from './components/Auth/ChangePassword';
 import ToDoList from './components/ToDoList/ToDoList';
 import InactiveUsers from "./components/Users/InactiveUsers";
 import Error from "./components/Errors/Error";
+import Tasks from "./components/Tasks/Tasks";
 
 export default class Router extends Component {
     render() {
@@ -18,6 +19,7 @@ export default class Router extends Component {
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/users" component={Users}/>
+                    <Route exact path="/tasks" component={Tasks}/>
                     <Route exact path="/users/inactive" component={InactiveUsers}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>

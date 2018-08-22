@@ -1,6 +1,7 @@
 import React , {Component} from 'react';
 import {Container, InputGroup , Input , Button} from 'reactstrap';
 import axios from "axios/index";
+import {Link,Redirect} from 'react-router-dom';
 
 export default class ChangePassword extends Component {
     state = {
@@ -35,16 +36,11 @@ export default class ChangePassword extends Component {
         }
     };
 
-    _redirectLogin = () => {
-        this.props.history.push('/login');
-    };
-
     render() {
         const {email , error , code , password} = this.state;
 
-        if(sessionStorage.getItem('token'))
-        {
-            this.props.history.push('/users');
+        if (sessionStorage.getItem('token')) {
+            return <Redirect to={'/'}/>
         }
 
         return (
@@ -66,7 +62,7 @@ export default class ChangePassword extends Component {
                 <br />
                 {error && <h2 className={"errMessage"}>{error}</h2>}
                 <Button onClick={this._sendRequest} color="success">Send</Button>
-                <Button onClick={this._redirectLogin} className={'signUP'} color="success">Sign in</Button>
+                <Link className={'signUp-redirect'} to={'/login'}><Button className={'signUP'} color="success">Sign in</Button></Link>
             </Container>
         )
     }

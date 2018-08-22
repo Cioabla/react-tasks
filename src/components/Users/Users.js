@@ -204,13 +204,8 @@ export default class Users extends Component {
     render() {
         const {users, id , current_page , last_page, total_users , filter} = this.state;
 
-        if(!sessionStorage.getItem('token'))
-        {
-            this.props.history.push('/login');
-        }
-
         return (
-            <Layout title={'All Users'}>
+            <Layout title={`Users ${filter}`}>
                 <Modal isOpen={this.state.open} toggle={this._toggle}>
                     <ModalHeader toggle={this._toggle}>{id ? 'Edit user' : 'Add user'}</ModalHeader>
                     <ModalBody>

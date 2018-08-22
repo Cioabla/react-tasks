@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {InputGroup,Input,Button,Container} from 'reactstrap';
+import {Link,Redirect} from 'react-router-dom';
 
 export default class Register extends Component {
     state = {
@@ -42,16 +43,11 @@ export default class Register extends Component {
         }
     };
 
-    _redirectLogin = () => {
-        this.props.history.push('/login');
-    };
-
     render() {
         const {email, password , name , password2 ,error} = this.state;
 
-        if(sessionStorage.getItem('token'))
-        {
-            this.props.history.push('/users');
+        if (sessionStorage.getItem('token')) {
+            return <Redirect to={'/'}/>
         }
 
         return (
@@ -77,7 +73,7 @@ export default class Register extends Component {
                 <br/>
                 {error && <h2 className={"errMessage"}>{error}</h2>}
                 <Button onClick={this._register} color="success">Sign up</Button>
-                <Button onClick={this._redirectLogin} className={'signUP'} color="success">Sign in</Button>
+                <Link className={'signUp-redirect'} to={'/login'}><Button className={'signUP'} color="success">Sign in</Button></Link>
             </Container>
         )
     }

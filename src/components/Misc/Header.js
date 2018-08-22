@@ -40,7 +40,7 @@ export default class Header extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink className={'navItem'}  href={''} onClick={this._logout}>Logout</NavLink>
+                                <NavLink href={''} className={'navItem'} onClick={this._logout}>Logout</NavLink>
                             </NavItem>
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle className={'navItem'} nav caret>
