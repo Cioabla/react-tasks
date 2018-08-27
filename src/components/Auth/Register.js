@@ -28,7 +28,7 @@ export default class Register extends Component {
             this.setState({error: '\n' +
                 'Write the same password in both password fields'});
         }else {
-            const response = await axios.post('http://api-tasks-react/v1/register', {
+            const response = await axios.post(process.env.REACT_APP_API_URL + 'register', {
                 email, password , name
             });
 

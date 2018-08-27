@@ -22,7 +22,7 @@ export default class ChangePassword extends Component {
     _sendRequest = async () => {
         const {email , code , password} = this.state;
 
-        const response = await axios.post('http://api-tasks-react/v1/change-password', {
+        const response = await axios.post(process.env.REACT_APP_API_URL + 'change-password', {
             email , code , password
         });
 

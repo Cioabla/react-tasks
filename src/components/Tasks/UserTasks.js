@@ -1,13 +1,12 @@
 import React, {Component} from 'react';
 import Layout from "../Misc/Layout";
 import axios from "axios/index";
-import TaskRow from "./TaskRow";
-import '../../css/Tasks.css';
+import TaskRow from './TaskRow';
 import PaginationUsers from "../Users/PaginationUsers";
 import {ListGroup,ListGroupItem,Button,Modal,ModalFooter,ModalHeader,ModalBody,Form,FormGroup,Label,Input} from 'reactstrap';
 
 
-export default class Tasks extends Component{
+export default class UserTasks extends Component{
     state = {
         tasks: [],
         usersField: [],
@@ -27,8 +26,8 @@ export default class Tasks extends Component{
     async componentDidMount() {
         if(sessionStorage.getItem('token'))
         {
-            let tasks = await axios.get(process.env.REACT_APP_API_URL + 'tasks');
-            let users = await axios.get(process.env.REACT_APP_API_URL + 'users');
+            const tasks = await axios.get(process.env.REACT_APP_API_URL + 'tasks/user-tasks');
+            const users = await axios.get(process.env.REACT_APP_API_URL + 'users');
 
             if (tasks && tasks.data && tasks.data.data) {
 
@@ -39,7 +38,8 @@ export default class Tasks extends Component{
                     total_tasks: tasks.data.data.total
                 });
 
-            } else {
+            }
+            else {
                 this.props.history.push('/error')
             }
 
@@ -59,7 +59,7 @@ export default class Tasks extends Component{
         const {current_page} = this.state;
 
         if (this.state.shouldRerender) {
-            let tasks = await axios.get(process.env.REACT_APP_API_URL + `tasks?page=${current_page}`);
+            let tasks = await axios.get(process.env.REACT_APP_API_URL + `tasks/user-tasks?page=${current_page}`);
 
             if (tasks && tasks.data && tasks.data.data) {
 
@@ -183,7 +183,7 @@ export default class Tasks extends Component{
         const {tasks,id,usersField,current_page,last_page,total_tasks} = this.state;
 
         return (
-            <Layout title={'All tasks'}>
+            <Layout title={'Your tasks'}>
                 <Modal isOpen={this.state.openModalDelete} toggle={this._toggleDelete}>
                     <ModalHeader toggle={this._toggleDelete}>Delete</ModalHeader>
                     <ModalBody>

@@ -11,6 +11,10 @@ import ToDoList from './components/ToDoList/ToDoList';
 import InactiveUsers from "./components/Users/InactiveUsers";
 import Error from "./components/Errors/Error";
 import Tasks from "./components/Tasks/Tasks";
+import UserTasks from "./components/Tasks/UserTasks";
+import StartedTasks from "./components/Tasks/StartedTasks";
+import AssignedTasks from "./components/Tasks/AssignedTasks";
+import Log from './components/Log';
 
 export default class Router extends Component {
     render() {
@@ -19,13 +23,17 @@ export default class Router extends Component {
                 <Switch>
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/users" component={Users}/>
-                    <Route exact path="/tasks" component={Tasks}/>
                     <Route exact path="/users/inactive" component={InactiveUsers}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/register" component={Register}/>
                     <Route exact path="/forgot-password" component={ForgotPassword}/>
                     <Route exact path="/change-password" component={ChangePassword}/>
                     <Route exact path="/to-do-list" component={ToDoList}/>
+                    <Route exact path="/tasks" component={Tasks}/>
+                    <Route exact path="/tasks/user-tasks" component={UserTasks}/>
+                    <Route exact path="/tasks/started-tasks" component={StartedTasks}/>
+                    <Route exact path="/tasks/assigned-tasks" component={AssignedTasks}/>
+                    <Route exact path="/tasks-history" component={Log}/>
                     <Route exact path="/error" component={Error}/>
                 </Switch>
             </BrowserRouter>

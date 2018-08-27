@@ -1,0 +1,13 @@
+.toShowLogs {
+    display: none;
+}
+
+@media (max-width: 575px) {
+    .toHideLogs {
+        display: none !important;
+    }
+
+    .toShowLogs {
+        display: inline !important;
+    }
+}

@@ -7,7 +7,6 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink,
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
@@ -40,7 +39,7 @@ export default class Header extends Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href={''} className={'navItem'} onClick={this._logout}>Logout</NavLink>
+                                <div className={'navItem navItemLogout'} onClick={this._logout}>Logout</div>
                             </NavItem>
                             <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle className={'navItem'} nav caret>

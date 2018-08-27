@@ -20,7 +20,7 @@ export default class ForgotPassword extends Component {
     _sendRequest = async () => {
         const {email} = this.state;
 
-        const response = await axios.post('http://api-tasks-react/v1/forgot-password', {
+        const response = await axios.post(process.env.REACT_APP_API_URL + 'forgot-password', {
             email
         });
 

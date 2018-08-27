@@ -45,3 +45,38 @@
         display: inline !important;
     }
 }
+
+@media (max-width: 488px) {
+    .user-inherit .row {
+        margin: 0;
+    }
+
+    .user-inherit .row .col-md-9{
+        padding: 0;
+    }
+
+    .user-inherit .row .col-md-9 .paginationDiv .pagination .currentPg{
+        margin-left: 0;
+        margin-right: 5px;
+    }
+
+    .user-inherit .row .col-md-9 .paginationDiv .pagination .totalUsers{
+        margin-right: 0;
+        margin-left: 5px;
+    }
+
+    .user-inherit .row .col-md-3 {
+       text-align: center;
+    }
+
+    .user-inherit .row .col-md-3 .pagination .filter .row .selectOption{
+        padding: 0;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .user-inherit .row .col-md-3 .pagination {
+        margin-top: 10px;
+    }
+}

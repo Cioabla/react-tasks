@@ -31,7 +31,7 @@ export default class InactiveUsers extends Component {
     async componentDidMount() {
         if(sessionStorage.getItem('role') === '1')
         {
-            let users = await axios.get('http://api-tasks-react/v1/admin/users/inactive');
+            let users = await axios.get(process.env.REACT_APP_API_URL + 'admin/users/inactive');
 
             if (users && users.data && users.data.data) {
 
@@ -52,7 +52,7 @@ export default class InactiveUsers extends Component {
         const {current_page} = this.state;
 
         if (this.state.shouldRerender) {
-            let users = await axios.get(`http://api-tasks-react/v1/admin/users/inactive?page=${current_page}`);
+            let users = await axios.get(process.env.REACT_APP_API_URL + `admin/users/inactive?page=${current_page}`);
 
             if (users && users.data && users.data.data) {
 
@@ -73,7 +73,7 @@ export default class InactiveUsers extends Component {
     _deleteUser = async () => {
         const {id} = this.state;
 
-        let res = await axios.delete(`http://api-tasks-react/v1/admin/user/${id}`);
+        let res = await axios.delete(process.env.REACT_APP_API_URL + `admin/user/${id}`);
 
         if (res && res.data && res.data.responseType === 'success') {
             this.setState({
@@ -90,7 +90,7 @@ export default class InactiveUsers extends Component {
     _activate = async (user) => {
         let res;
 
-        res = await axios.patch(`http://api-tasks-react/v1/admin/user/${user.id}`, {status: 1});
+        res = await axios.patch(process.env.REACT_APP_API_URL + `admin/user/${user.id}`, {status: 1});
 
         if (res && res.data && res.data.responseType === 'success') {
             this.setState({
@@ -113,7 +113,7 @@ export default class InactiveUsers extends Component {
         }
 
         return (
-            <Layout title={'Inactive Users'}>
+            <Layout title={'Inactive users'}>
                 <Modal isOpen={this.state.openModalDelete} toggle={this._toggleDelete}>
                     <ModalHeader toggle={this._toggleDelete}>Delete</ModalHeader>
                     <ModalBody>
@@ -138,7 +138,7 @@ export default class InactiveUsers extends Component {
                         return <UserRow activateUser={true} key={key} user={user} activate={this._activate} deleteUser={this._deleteModal}/>
                     })}
                     <ListGroupItem>
-                        <PaginationUsers current_page={current_page} last_page={last_page} total_users={total_users} pg={this._pg}/>
+                        <PaginationUsers name={'Users'} current_page={current_page} last_page={last_page} total_users={total_users} pg={this._pg}/>
                     </ListGroupItem>
                 </ListGroup>
             </Layout>

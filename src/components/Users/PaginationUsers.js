@@ -62,7 +62,7 @@ export default class PaginationUsers extends Component {
     };
 
     render() {
-        const {current_page , last_page , total_users , filter , isFilter} = this.props;
+        const {current_page , last_page , total_users , filter , isFilter , name} = this.props;
 
         return (
                 <Row>
@@ -75,7 +75,7 @@ export default class PaginationUsers extends Component {
                             {this._createPagination(last_page)}
                             {this._nextPg(current_page , last_page)}
                             <PaginationItem className={'totalUsers'}>
-                                <PaginationLink disabled>Users: {total_users}</PaginationLink>
+                                <PaginationLink disabled>{name}: {total_users}</PaginationLink>
                             </PaginationItem>
                         </Pagination>
                     </Col>

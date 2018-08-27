@@ -12,3 +12,12 @@
 .navItem {
     color: white;
 }
+
+.navItemLogout{
+    display: flex;
+    padding: 8px;
+}
+
+.navItemLogout:hover {
+    color: #3B5998;
+}

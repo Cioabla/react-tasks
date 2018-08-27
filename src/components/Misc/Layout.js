@@ -4,11 +4,15 @@ import Footer from './Footer';
 import {Redirect,Link} from "react-router-dom";
 import axios from 'axios';
 import qs from 'qs';
-import {Row,Col,ListGroup,ListGroupItem} from 'reactstrap';
+import {Row,Col,ListGroup,ListGroupItem,Button} from 'reactstrap';
 import '../../css/Layout.css';
 import {Icon} from 'react-fa'
 
 export default class Layout extends Component {
+    state = {
+        tasksList: false
+    };
+
     _showRole = role => {
         switch (role) {
             case '1':
@@ -20,8 +24,13 @@ export default class Layout extends Component {
         }
     };
 
+    _taskAction = () => {
+        this.setState({tasksList: !this.state.tasksList});
+    };
 
     render() {
+
+        const {tasksList} = this.state;
 
         if (!sessionStorage.getItem('token')) {
             return <Redirect to={'/login'}/>
@@ -36,13 +45,6 @@ export default class Layout extends Component {
 
         axios.defaults.headers.common.Authorization = 'Bearer ' + sessionStorage.getItem('token');
 
-        let admin = false;
-
-        if(sessionStorage.getItem('role') === '1')
-        {
-            admin = true;
-        }
-
         return (
             <div className={'layout'}>
                 <Header/>
@@ -56,8 +58,41 @@ export default class Layout extends Component {
                                 <ListGroup className={'list'}>
                                     <ListGroupItem className={'listTitle'}>MAIN NAVIGATION</ListGroupItem>
                                     <Link to={'/to-do-list'}><ListGroupItem className={'list-element'}><Icon className={'icon'} name='spinner'/>TO DO LIST</ListGroupItem></Link>
-                                    {admin && <Link to={'/users'}><ListGroupItem className={'list-element'}><Icon className={'icon'} name='users'/>All Users</ListGroupItem></Link>}
-                                    <Link to={'/tasks'}><ListGroupItem className={'list-element'}><Icon className={'icon'} name='tasks'/>All tasks</ListGroupItem></Link>
+                                    {(sessionStorage.getItem('role') === '1') && <Link to={'/users'}><ListGroupItem className={'list-element'}><Icon className={'icon'} name='users'/>All Users</ListGroupItem></Link>}
+                                    <Button onClick={this._taskAction} className={'list-element list-element-button'}>
+                                        <Icon className={'icon'} name='tasks'/>
+                                        Tasks
+                                        {tasksList ? <Icon className={'icon left-angle-icon'} name='angle-down'/> : <Icon className={'icon left-angle-icon'} name='angle-left'/>}
+                                    </Button>
+                                    {tasksList &&
+                                    <Link to={'/tasks'}>
+                                        <ListGroupItem className={'sub-list-element'}>
+                                            <Icon className={'icon'} name='circle-o'/>
+                                            All tasks
+                                        </ListGroupItem>
+                                    </Link>}
+                                    {tasksList && (sessionStorage.getItem('role') === '1') &&
+                                    <Link to={'/tasks/user-tasks'}>
+                                        <ListGroupItem className={'sub-list-element'}>
+                                            <Icon className={'icon'} name='circle-o'/>
+                                            Your tasks
+                                        </ListGroupItem>
+                                    </Link>}
+                                    {tasksList &&
+                                    <Link to={'/tasks/started-tasks'}>
+                                        <ListGroupItem className={'sub-list-element'}>
+                                            <Icon className={'icon'} name='circle-o'/>
+                                            Your started tasks
+                                        </ListGroupItem>
+                                    </Link>}
+                                    {tasksList &&
+                                    <Link to={'/tasks/assigned-tasks'}>
+                                        <ListGroupItem className={'sub-list-element'}>
+                                            <Icon className={'icon'} name='circle-o'/>
+                                            Your assigned tasks
+                                        </ListGroupItem>
+                                    </Link>}
+                                    {(sessionStorage.getItem('role') === '1') && <Link to={'/tasks-history'}><ListGroupItem className={'list-element'}><Icon className={'icon'} name='history'/>Tasks history</ListGroupItem></Link>}
                                 </ListGroup>
                             </Col>
                         </Col>

@@ -83,6 +83,37 @@ body {
     display: block;
 }
 
+.list-element-button {
+    text-align: left;
+    padding: 12px 20px 12px 20px;
+    border: black;
+}
+
+.list-element-button.focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.list-element-button:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.left-angle-icon {
+    float: right;
+    color: white;
+    padding-top: 3px;
+}
+
+.sub-list-element {
+    background-color: #610D1D;
+    color: white;
+
+}
+
+.sub-list-element:hover {
+    background-color: #333;
+}
 
 @media only screen and (max-width: 992px) {
     .main-container {

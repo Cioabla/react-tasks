@@ -23,7 +23,7 @@ export default class Login extends Component {
     _login = async () => {
         const {email, password} = this.state;
 
-        const response = await axios.post('http://api-tasks-react/v1/login', {
+        const response = await axios.post(process.env.REACT_APP_API_URL + 'login', {
             email, password
         });
 

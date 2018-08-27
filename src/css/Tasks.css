@@ -7,6 +7,10 @@
     display: inline;
 }
 
+.center {
+    text-align: center;
+}
+
 .header-task-list {
     border-bottom: 1px solid black;
 }
@@ -28,4 +32,34 @@
 
 .task-list-group-item {
     margin-bottom: 5px;
+}
+
+.button-add-tasks {
+    float: right;
+}
+
+@media (max-width: 488px) {
+    .button-add-tasks {
+        float: none;
+        margin-bottom: 8px;
+        width: 100%;
+    }
+
+    .tasks-inherit .row {
+        margin: 0;
+    }
+
+    .tasks-inherit .row .col-md-9{
+        padding: 0;
+    }
+
+    .tasks-inherit .row .col-md-9 .paginationDiv .pagination .currentPg{
+       margin-left: 0;
+        margin-right: 5px;
+    }
+
+    .tasks-inherit .row .col-md-9 .paginationDiv .pagination .totalUsers{
+        margin-right: 0;
+        margin-left: 5px;
+    }
 }

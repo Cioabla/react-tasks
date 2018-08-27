@@ -40,7 +40,7 @@ export default class Users extends Component {
     async componentDidMount() {
         if(sessionStorage.getItem('role') === '1')
         {
-            let users = await axios.get('http://api-tasks-react/v1/admin/users');
+            let users = await axios.get(process.env.REACT_APP_API_URL + 'admin/users');
 
             if (users && users.data && users.data.data) {
 
@@ -119,15 +119,15 @@ export default class Users extends Component {
     _filterAction = filter => {
         switch (filter) {
             case '':
-                return 'http://api-tasks-react/v1/admin/users?page=';
+                return process.env.REACT_APP_API_URL + 'admin/users?page=';
             case 'Users':
-                return 'http://api-tasks-react/v1/admin/users/users?page=';
+                return process.env.REACT_APP_API_URL + 'admin/users/users?page=';
             case 'Admins':
-                return 'http://api-tasks-react/v1/admin/users/admins?page=';
+                return process.env.REACT_APP_API_URL + 'admin/users/admins?page=';
             case 'Inactive':
-                return 'http://api-tasks-react/v1/admin/users/inactive?page=';
+                return process.env.REACT_APP_API_URL + 'admin/users/inactive?page=';
             case 'Active':
-                return 'http://api-tasks-react/v1/admin/users/active?page=';
+                return process.env.REACT_APP_API_URL + 'admin/users/active?page=';
             default:
                 return 'Unknown'
         }
@@ -147,11 +147,11 @@ export default class Users extends Component {
         let res;
 
         if (id) {
-            res = await axios.patch(`http://api-tasks-react/v1/admin/user/${id}`, data);
+            res = await axios.patch(process.env.REACT_APP_API_URL + `admin/user/${id}`, data);
         } else {
             data.password = password;
 
-            res = await axios.post('http://api-tasks-react/v1/admin/user', data);
+            res = await axios.post(process.env.REACT_APP_API_URL + 'admin/user', data);
         }
 
         if (res && res.data && res.data.responseType === 'success') {
@@ -191,7 +191,7 @@ export default class Users extends Component {
     _deleteUser = async () => {
         const {id} = this.state;
 
-       let res = await axios.delete(`http://api-tasks-react/v1/admin/user/${id}`);
+       let res = await axios.delete(process.env.REACT_APP_API_URL + `admin/user/${id}`);
 
         if (res && res.data && res.data.responseType === 'success') {
             this.setState({
@@ -201,11 +201,28 @@ export default class Users extends Component {
         }
     };
 
+    _titleAction = filter  => {
+        switch (filter){
+            case '':
+                return 'All users';
+            case 'Admins':
+                return 'Admins';
+            case 'Users':
+                return 'Users';
+            case 'Inactive':
+                return 'Inactive users';
+            case 'Active':
+                return 'Active users';
+            default:
+                return 'Unknown'
+        }
+    };
+
     render() {
         const {users, id , current_page , last_page, total_users , filter} = this.state;
 
         return (
-            <Layout title={`Users ${filter}`}>
+            <Layout title={this._titleAction(filter)}>
                 <Modal isOpen={this.state.open} toggle={this._toggle}>
                     <ModalHeader toggle={this._toggle}>{id ? 'Edit user' : 'Add user'}</ModalHeader>
                     <ModalBody>
@@ -292,8 +309,8 @@ export default class Users extends Component {
                     {users && users.map((user, key) => {
                         return <UserRow editUsers={true} key={key} user={user} edit={this._edit} deleteUser={this._deleteModal}/>
                     })}
-                    <ListGroupItem>
-                            <PaginationUsers isFilter={true} current_page={current_page} last_page={last_page} total_users={total_users} filter={filter} pg={this._pg} onChangeFilter={this._onChangeFilter}/>
+                    <ListGroupItem className={'user-inherit'}>
+                            <PaginationUsers name={'Users'} isFilter={true} current_page={current_page} last_page={last_page} total_users={total_users} filter={filter} pg={this._pg} onChangeFilter={this._onChangeFilter}/>
                     </ListGroupItem>
                 </ListGroup>
             </Layout>
