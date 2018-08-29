@@ -71,7 +71,7 @@ export default class LogsRow extends Component{
                             <b className={'toShowLogs'}>Task name: </b>{this._taskName(log.task)}
                         </Col>
                         <Col sm={3}>
-                            <b className={'toShowLogs'}>User name: </b>{this._userName(log.user)}
+                            <b className={'toShowLogs'}>Change by: </b>{this._userName(log.user)}
                         </Col>
                         <Col sm={2}>
                             <b className={'toShowLogs'}>Type: </b>{this._typeAction(log.type)}

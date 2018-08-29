@@ -15,6 +15,7 @@ import UserTasks from "./components/Tasks/UserTasks";
 import StartedTasks from "./components/Tasks/StartedTasks";
 import AssignedTasks from "./components/Tasks/AssignedTasks";
 import Log from './components/Log';
+import TaskDetails from "./components/Tasks/TaskDetails";
 
 export default class Router extends Component {
     render() {
@@ -33,6 +34,9 @@ export default class Router extends Component {
                     <Route exact path="/tasks/user-tasks" component={UserTasks}/>
                     <Route exact path="/tasks/started-tasks" component={StartedTasks}/>
                     <Route exact path="/tasks/assigned-tasks" component={AssignedTasks}/>
+
+                    <Route path="/task/:id" component={TaskDetails} />
+
                     <Route exact path="/tasks-history" component={Log}/>
                     <Route exact path="/error" component={Error}/>
                 </Switch>

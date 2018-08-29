@@ -13,9 +13,45 @@
     color: white;
 }
 
-.navItemLogout{
+.navItemLogout {
     display: flex;
     padding: 8px;
+    cursor: pointer;
+}
+
+.navItemNotification {
+    display: inline;
+    padding: 8px 0 8px 4px;
+    margin-top: 6px;
+}
+
+.total-notification {
+    display: inline;
+}
+
+.notification-div:hover {
+    color: #3B5998;
+}
+
+.notification-div:hover .navItem .navItemNotification .iconNotification {
+    color: #3B5998;
+}
+
+.notificationListGroup {
+    padding: 1px;
+    cursor: pointer;
+}
+
+.notList {
+    padding: 0;
+}
+
+.notList h6{
+   font-size: 15px;
+}
+
+.notificationListItem {
+    padding: 1px 1px 1px 1px;
 }
 
 .navItemLogout:hover {

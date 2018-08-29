@@ -80,7 +80,7 @@ export default class Log extends Component{
                             <b>Task name</b>
                         </Col>
                         <Col sm={3}>
-                            <b>User name</b>
+                            <b>Change by</b>
                         </Col>
                         <Col sm={2}>
                             <b>Type</b>
